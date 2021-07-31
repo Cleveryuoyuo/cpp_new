@@ -4,6 +4,103 @@
 #include <string>
 using namespace std;
 
+
+
+
+class A
+{
+public:
+
+	virtual ~A()
+	{
+		cout << "~A" << endl;
+	}
+};
+
+class D:public A
+{
+public:
+
+	virtual ~D()
+	{
+		cout << "~D" << endl;
+	}
+};
+
+void main()
+{
+	A* pa = new D;
+	delete pa;
+}
+
+
+/*
+int a = 10;
+int b = 20;
+class P
+{
+public:
+	int* fun() //加上虚函数 则用父亲指针走向孩子  不加虚函数 则父亲指针走向自己
+	{
+		cout << "P->"<<&a << endl;
+		return &a;
+	}
+};
+class S :public P
+{
+public:
+	int* fun()
+	{
+		cout << "S ->"<<&b << endl;
+		return &b;
+	}
+};
+void main()
+{
+	P* pb;
+	S s;
+	pb = &s;
+	pb->fun();
+}
+
+/*
+class P
+{
+public:
+	void fun()
+	{
+		cout << "person:全价" << endl;
+	}
+	virtual void show()
+	{
+		cout << "P ->show()" << endl;
+	}
+private:
+	int ma;
+};
+
+class S :public P
+{
+public:
+	void fun()
+	{
+		cout << "student:半价" << endl;
+	}
+	void show()
+	{
+		cout << "S ->show()" << endl;
+	}
+private:
+	int mb;
+};
+
+void main()
+{
+	S s;
+	s.show();
+}
+
+/*
 class A
 {
 public:
